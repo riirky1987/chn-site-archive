@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>专题 · leyu 主题杂志</title>
+  <style>
+    /* ===== 全局重置与基调 ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f0f2f5;
+      color: #1e1e2a;
+      line-height: 1.65;
+      padding: 2rem 1.5rem;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ===== 首页横幅 hero ===== */
+    .hero {
+      background: linear-gradient(135deg, #e8ecf1 0%, #d6dce6 100%);
+      border-radius: 28px;
+      padding: 4rem 2.5rem 3.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.03);
+      border: 1px solid rgba(255,255,255,0.65);
+      transition: all 0.15s ease;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 580;
+      letter-spacing: -0.02em;
+      color: #1f2937;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero .sub {
+      font-size: 1.2rem;
+      color: #374151;
+      max-width: 600px;
+      border-left: 4px solid #8899aa;
+      padding-left: 1.2rem;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(2px);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: white;
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #2d3f50;
+      border: 1px solid #cad2db;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+      margin-top: 1.8rem;
+    }
+
+    /* ===== 背景说明卡片 (杂志引言) ===== */
+    .context-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.4rem 2.2rem;
+      margin-bottom: 2.6rem;
+      border: 1px solid #e3e8ef;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.02);
+      transition: box-shadow 0.2s;
+    }
+
+    .context-card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px #d0d8e2;
+    }
+
+    .context-card h2 {
+      font-weight: 550;
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+      color: #1f2937;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e9edf3;
+      padding-bottom: 0.5rem;
+    }
+
+    .context-card p {
+      color: #2d3748;
+      margin-bottom: 0.9rem;
+    }
+
+    .context-card .highlight {
+      font-weight: 500;
+      color: #1e3a5f;
+    }
+
+    /* ===== 三段自然介绍 (网格卡片) ===== */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.2rem 0 2.8rem;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 2rem 1.8rem 2.2rem;
+      border: 1px solid #e2e7ef;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.01), 0 2px 4px rgba(0,0,0,0.02);
+      transition: transform 0.1s ease, box-shadow 0.15s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .feature-card .num {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6a7b8c;
+      background: #f0f3f8;
+      padding: 0.2rem 0.8rem;
+      border-radius: 24px;
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.3px;
+      border: 1px solid #dce2eb;
+    }
+
+    .feature-card h3 {
+      font-size: 1.4rem;
+      font-weight: 540;
+      color: #1f2937;
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+      color: #3a4659;
+      font-size: 0.96rem;
+    }
+
+    .feature-card p + p {
+      margin-top: 0.8rem;
+    }
+
+    /* ===== 场景 + 提示混合区 ===== */
+    .insight-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 2rem 0 2.6rem;
+    }
+
+    .insight-item {
+      flex: 1 1 240px;
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem 1.8rem 2rem;
+      border: 1px solid #e3e8ef;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+    }
+
+    .insight-item .label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #5d738b;
+      margin-bottom: 0.5rem;
+    }
+
+    .insight-item h4 {
+      font-weight: 530;
+      font-size: 1.2rem;
+      color: #1f2937;
+      margin-bottom: 0.3rem;
+    }
+
+    .insight-item p {
+      color: #364153;
+      font-size: 0.95rem;
+    }
+
+    /* ===== FAQ 摘要 (杂志侧栏风格) ===== */
+    .faq-digest {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.2rem 2rem;
+      margin: 2rem 0 2.8rem;
+      border: 1px solid #e2e7ef;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .faq-digest h3 {
+      font-weight: 550;
+      font-size: 1.3rem;
+      color: #1f2937;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .faq-digest h3::before {
+      content: "◆";
+      font-size: 1rem;
+      color: #7f8fa0;
+    }
+
+    .faq-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.8rem;
+    }
+
+    .faq-item {
+      flex: 1 1 200px;
+      border-left: 3px solid #dce2eb;
+      padding-left: 1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 540;
+      color: #1e2c3a;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      color: #4a5b72;
+      font-size: 0.9rem;
+    }
+
+    /* ===== 页尾访问提示 ===== */
+    .footer-note {
+      background: #e7ecf3;
+      border-radius: 28px;
+      padding: 2.6rem 2.2rem;
+      margin: 2.5rem 0 0.5rem;
+      text-align: center;
+      border: 1px solid #d6dee9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .footer-note p {
+      font-size: 1.1rem;
+      color: #1f2a38;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .footer-note .link-embed {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-note a {
+      color: #1f3a57;
+      text-decoration: none;
+      font-weight: 540;
+      border-bottom: 2px solid #a0b6cc;
+      padding-bottom: 0.1rem;
+      transition: border-color 0.15s;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #1f3a57;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 820px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero {
+        padding: 3rem 1.8rem;
+      }
+    }
+
+    @media (max-width: 580px) {
+      body {
+        padding: 1rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .context-card, .faq-digest, .insight-block, .footer-note {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .hero .sub {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 首页横幅 -->
+  <header class="hero">
+    <h1>主题 · 杂志</h1>
+    <div class="sub">围绕关键词背后的结构、逻辑与场景展开，<br>一份信息密度较高的专题笔记。</div>
+    <span class="hero-tag">leyu · 内容切片</span>
+  </header>
+
+  <!-- 背景说明 (杂志引言) -->
+  <section class="context-card">
+    <h2>背景 · 从关键词到内容层</h2>
+    <p><span class="highlight">leyu</span> 所指向的并非单一概念，而是由信息组织、主题聚类与用户路径共同构成的系统。在许多内容型平台与工具链中，类似的结构往往承担着“枢纽”的角色——它既连接原始资料，又提供检索与整合的界面。本专题从这一角度切入，梳理其内在组织逻辑，不预设立场，只呈现可被讨论的框架。</p>
+    <p>通过对标签体系、关联节点和访问习惯的观察，我们能更清晰地理解这类主题的构成方式。以下三段分别从结构、场景和层次展开。</p>
+  </section>
+
+  <!-- 三段自然介绍 (卡片网格) -->
+  <div class="feature-grid">
+    <article class="feature-card">
+      <span class="num">01</span>
+      <h3>结构触点</h3>
+      <p>内容组织的核心在于节点与关系。每一个可访问的主题都对应一组嵌套索引：标签、摘要、延伸阅读。在这种设计下，<strong>leyu</strong> 代表的是一类信息集合，而非孤立词条。其层级往往控制在三级以内，以保证浏览的流畅与可回溯。</p>
+      <p>通过分类与权重分配，用户能快速定位到关联内容，减少无效跳转。</p>
+    </article>
+
+    <article class="feature-card">
+      <span class="num">02</span>
+      <h3>场景映射</h3>
+      <p>当用户在聚合页中浏览时，系统会依据上下文推荐相邻主题。例如从某个关键词出发，侧栏或底部模块会展示平行概念、上位分类或历史记录。这种映射并不依赖随机性，而是基于预先定义的语义距离。</p>
+      <p>在实际使用中，<strong>leyu</strong> 相关的场景往往涉及多步探索：从首页进入，经过列表页筛选，最终抵达细分类目。每一步都有明确的视觉反馈与路径标识。</p>
+    </article>
+
+    <article class="feature-card">
+      <span class="num">03</span>
+      <h3>层次与粒度</h3>
+      <p>信息密度需要与展示粒度匹配。在聚合页面中，标题、摘要、元数据（如更新日期、标签数）构成第一层；点击后展开的详细描述或关联列表为第二层；更深层则包含原始来源或操作面板。</p>
+      <p>保持三层以内的结构，有助于降低认知负荷。同时，每个层级都应提供返回上一级或跳转到相关模块的入口，形成自然的浏览闭环。</p>
+    </article>
+  </div>
+
+  <!-- 场景+提示混合区 (双卡片) -->
+  <div class="insight-block">
+    <div class="insight-item">
+      <div class="label">典型场景</div>
+      <h4>主题聚合页</h4>
+      <p>当用户访问一个关键词的主题页时，页面通常展示：简介卡片、关联话题列表、近期更新条目。每个区块都带有细边框与柔和阴影，便于视线分割。这种布局适用于信息量中等、需要快速扫读的场景。</p>
+    </div>
+    <div class="insight-item">
+      <div class="label">操作提示</div>
+      <h4>导航与回溯</h4>
+      <p>页面顶部一般设有面包屑或返回按钮；右侧或底部会放置“相关主题”模块。在移动端，这些元素被收纳为折叠面板或底部浮层，以保证小屏下的可操作性。所有交互均遵循轻量原则，不干扰主要阅读流。</p>
+    </div>
+    <div class="insight-item">
+      <div class="label">内容节奏</div>
+      <h4>段落与停顿</h4>
+      <p>每个卡片区块独立呈现一个观点，段落之间保留1.5–2行间距。在长页面中，间隔区块（如背景说明卡）起到呼吸作用，帮助用户重新聚焦。标题层级明确，字号递进自然。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 (杂志侧栏风格) -->
+  <section class="faq-digest">
+    <h3>常见思路摘要</h3>
+    <div class="faq-row">
+      <div class="faq-item">
+        <div class="q">关键词如何被组织？</div>
+        <div class="a">通常通过标签、分类树与手动关联，形成网状结构。每个节点可承载多个父级或子级。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">页面信息密度如何控制？</div>
+        <div class="a">每个卡片区块字数约80–150字，配合标题和留白，避免大段连续文本。细边框和柔和阴影辅助视觉分区。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">移动端适配原则？</div>
+        <div class="a">网格自动降为单列，卡片内边距适当缩小，所有交互元素保留可点击区域 ≥ 44×44px。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页尾访问提示（自然嵌入链接） -->
+  <footer class="footer-note">
+    <p>本专题基于对内容组织模式的普遍观察写成。若希望进一步了解相关主题的结构与设计，可参考 <a href="https://chn-site-leyu.com">leyu</a> 的页面布局与信息层级——该站点在分类聚合与导航反馈方面提供了较为完整的示例。</p>
+    <div class="link-embed">
+      <span>主题索引 · </span>
+      <a href="https://chn-site-leyu.com">leyu</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
